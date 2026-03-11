@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeliGuardian | Shared Safety Intelligence for UK HEMS</title>
+    <meta name="description" content="Hospital helipads are essential to emergency critical care. HeliGuardian enables organisations to share accurate safety data without surrendering operational independence. Join the early adopter programme.">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --slate-900: #0f172a;
+            --slate-800: #1e293b;
+            --slate-700: #334155;
+            --slate-600: #475569;
+            --slate-400: #94a3b8;
+            --slate-200: #e2e8f0;
+            --slate-100: #f1f5f9;
+            --slate-50: #f8fafc;
+            --teal-600: #0d9488;
+            --teal-500: #14b8a6;
+            --teal-400: #2dd4bf;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--slate-800);
+            background-color: var(--slate-50);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+            line-height: 1.25;
+            color: var(--slate-900);
+        }
+
+        h1 {
+            font-size: clamp(2.25rem, 4.5vw, 3rem);
+            letter-spacing: -0.025em;
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(248, 250, 252, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--slate-200);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.875rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .wordmark {
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: var(--slate-900);
+            text-decoration: none;
+            letter-spacing: -0.03em;
+        }
+
+        .wordmark span {
+            color: var(--teal-600);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.625rem 1.25rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.15s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--teal-600);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--teal-500);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--slate-800);
+            border: 1.5px solid var(--slate-300);
+        }
+
+        .btn-secondary:hover {
+            background: var(--slate-100);
+            border-color: var(--slate-400);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding-top: 6rem;
+            padding-bottom: 4rem;
+            background: var(--slate-50);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .tagline {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--teal-600);
+            margin-bottom: 0.75rem;
+        }
+
+        .dev-status {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--slate-600);
+            background: var(--slate-200);
+            padding: 0.3rem 0.6rem;
+            border-radius: 3px;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero h1 {
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-description {
+            font-size: 1.0625rem;
+            color: var(--slate-600);
+            margin-bottom: 1.75rem;
+            max-width: 520px;
+            line-height: 1.7;
+        }
+
+        /* Hero Form */
+        .hero-form {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--slate-200);
+            box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
+        }
+
+        .hero-form h3 {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--slate-900);
+            margin-bottom: 0.375rem;
+            text-align: center;
+        }
+
+        .hero-form .form-intro {
+            font-size: 0.875rem;
+            color: var(--slate-600);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--slate-700);
+            margin-bottom: 0.375rem;
+        }
+
+        .form-group label .optional {
+            font-weight: 400;
+            color: var(--slate-400);
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.625rem 0.75rem;
+            font-size: 0.9375rem;
+            font-family: inherit;
+            border: 1.5px solid var(--slate-200);
+            border-radius: 5px;
+            background: var(--slate-50);
+            color: var(--slate-800);
+            transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--teal-500);
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 56px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-top: 0.375rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            margin-top: 2px;
+            accent-color: var(--teal-600);
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            font-weight: 400;
+            font-size: 0.8125rem;
+            color: var(--slate-600);
+        }
+
+        .form-submit {
+            width: 100%;
+            margin-top: 0.75rem;
+            padding: 0.75rem;
+            font-size: 0.9375rem;
+        }
+
+        .form-note {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--slate-400);
+            margin-top: 1rem;
+        }
+
+        /* Approach Section */
+        .approach {
+            padding: 5rem 0;
+            background: var(--white);
+            border-top: 1px solid var(--slate-200);
+        }
+
+        .approach-header {
+            max-width: 640px;
+            margin-bottom: 2.5rem;
+        }
+
+        .approach-header p {
+            font-size: 1.0625rem;
+            color: var(--slate-600);
+            line-height: 1.7;
+        }
+
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+
+        .approach-card {
+            background: var(--slate-50);
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid var(--slate-200);
+            border-left: 3px solid var(--teal-600);
+        }
+
+        .approach-card h3 {
+            font-weight: 600;
+            font-size: 0.9375rem;
+            color: var(--slate-900);
+            margin-bottom: 0.5rem;
+        }
+
+        .approach-card p {
+            font-size: 0.9375rem;
+            color: var(--slate-600);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Founders Section */
+        .founders {
+            padding: 5rem 0;
+            background: var(--slate-800);
+            color: var(--white);
+        }
+
+        .founders h2 {
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .founders-intro {
+            font-size: 1rem;
+            color: var(--slate-400);
+            margin-bottom: 2.5rem;
+            max-width: 560px;
+        }
+
+        .founders-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+            max-width: 700px;
+        }
+
+        .founder-card {
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+        }
+
+        .founder-photo {
+            width: 64px;
+            height: 64px;
+            border-radius: 6px;
+            background: var(--slate-700);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--teal-400);
+            font-size: 1.5rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .founder-info h3 {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--white);
+            margin-bottom: 0.125rem;
+        }
+
+        .founder-title {
+            font-size: 0.8125rem;
+            color: var(--teal-400);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .founder-bio {
+            font-size: 1rem;
+            color: var(--slate-400);
+            line-height: 1.55;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--slate-900);
+            color: var(--white);
+            padding: 1.5rem 0;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            max-width: 520px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.75rem;
+            color: var(--slate-400);
+            cursor: pointer;
+            line-height: 1;
+            padding: 0.25rem;
+            transition: color 0.15s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--slate-700);
+        }
+
+        .modal-content h3 {
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: var(--slate-900);
+            margin-bottom: 0.75rem;
+        }
+
+        .modal-intro {
+            font-size: 0.9375rem;
+            color: var(--slate-600);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 600px) {
+            .modal-content {
+                padding: 1.75rem;
+            }
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-wordmark {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .footer-wordmark span {
+            color: var(--teal-500);
+        }
+
+        .footer-links a {
+            color: var(--slate-400);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.15s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .footer-copy {
+            font-size: 0.8125rem;
+            color: var(--slate-600);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-form {
+                max-width: 480px;
+            }
+
+            .approach-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .dev-status {
+                display: block;
+                margin-left: 0;
+                margin-top: 0.5rem;
+                width: fit-content;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 1.25rem;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 5rem 0 3rem;
+            }
+
+            .hero-form {
+                padding: 1.5rem;
+            }
+
+            .approach, .founders {
+                padding: 3.5rem 0;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-inner">
+            <a href="#" class="wordmark">Heli<span>Guardian</span></a>
+            <a href="#" class="btn btn-primary" onclick="openModal(); return false;">Get Updates</a>
+        </div>
+    </header>
+
+    <!-- Hero with integrated form -->
+    <section class="hero" id="contact">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Shared Safety Intelligence for UK HEMS</h1>
+                    <p class="hero-description">
+                        Hospital helicopter landing sites are essential to emergency critical care. But uncertainty about who owns the risk environment surrounding them is putting their continued availability in doubt.
+                    </p>
+                    <p class="hero-description" style="margin-bottom: 0;">
+                        No single organisation has the complete safety picture for any given site. The environment is dynamic, the data is siloed, and there has been no way to appropriately divide and share responsibility for it. Without that, there is no way to effectively share the risk.
+                    </p>
+                    <p class="hero-description" style="margin-top: 1.5rem; margin-bottom: 0;">
+                        HeliGuardian enables the organisations involved in UK emergency aviation to share accurate safety data for the same landing sites without surrendering operational independence or decision-making authority.
+                    </p>
+                    <button class="btn btn-primary hero-cta-btn" onclick="openModal()" style="margin-top: 1.5rem;">Get Updates on Our Progress</button>
+                </div>
+                <div class="hero-form">
+                    <h3>Early Adopter Programme</h3>
+                    <p class="form-intro">Join the programme to shape the product and get early access.</p>
+                    <p class="form-intro" style="margin-top: 0.5rem; margin-bottom: 1.5rem;">Just development updates, webinar invitations, and early access details. No spam.</p>
+                    <form action="https://formspree.io/f/xvzbgoql" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required placeholder="you@org.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="organisation">Organisation *</label>
+                                <input type="text" id="organisation" name="organisation" required placeholder="Your organisation">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Role *</label>
+                            <select id="role" name="role" required>
+                                <option value="" disabled selected>Select...</option>
+                                <option value="pilot">Pilot / Flight Crew</option>
+                                <option value="clinical">Clinical</option>
+                                <option value="operations">Operations / Base</option>
+                                <option value="dispatch">Dispatch / HEMS Desk</option>
+                                <option value="site-manager">Hospital / Site Manager</option>
+                                <option value="trust-executive">NHS Trust Executive</option>
+                                <option value="safety">Safety / Compliance</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="interest">What challenges would you want HeliGuardian to solve? <span class="optional">(optional)</span></label>
+                            <textarea id="interest" name="interest" placeholder="Help us prioritise what matters most..."></textarea>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="phonecall" name="phonecall" value="yes">
+                            <label for="phonecall">I'd welcome a call to discuss further</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary form-submit">Get Early Adopter Updates</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section class="approach">
+        <div class="container">
+            <div class="approach-header">
+                <h2>What We're Building</h2>
+                <p>
+                    HeliGuardian's architecture enables each organisation to maintain their own operational picture while sharing a common baseline of factual data.
+                </p>
+            </div>
+            <div class="approach-grid">
+                <div class="approach-card">
+                    <h3>Coordinated, Not Centralised</h3>
+                    <p>HeliGuardian provides a common baseline of factual data: site dimensions; survey results; known hazards; environmental conditions, onto which each organisation layers their own assessments and approvals. No one surrenders decision-making authority.</p>
+                </div>
+                <div class="approach-card">
+                    <h3>Your Data, Your View</h3>
+                    <p>Different stakeholders own and are responsible for different data types. HeliGuardian accommodates this complexity with clear ownership boundaries and governance at every level, so that accurate data flows to the right people at the right time.</p>
+                </div>
+                <div class="approach-card">
+                    <h3>Fully Auditable</h3>
+                    <p>Every action in HeliGuardian records who performed it, in what capacity, for which organisation, and when. Records are immutable and retention exceeds CAA requirements.</p>
+                </div>
+                <div class="approach-card">
+                    <h3>Built to Integrate</h3>
+                    <p>HeliGuardian is designed to export data to EFB applications, including those used specifically across UK HEMS operators. Operational data from HeliGuardian will reach crews through existing workflows.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2.5rem;">
+                <button class="btn btn-primary" onclick="openModal()">Get Updates on Our Progress</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="founders">
+        <div class="container">
+            <h2>The Team Building HeliGuardian</h2>
+            <p class="founders-intro">
+                HeliGuardian is led by someone who's lived the problem, supported by a small team with experience that spans emergency aviation and enterprise technology delivery.
+            </p>
+            <div class="founders-grid">
+                <div class="founder-card">
+                    <div class="founder-info">
+                        <h3>Rudi Lorenz</h3>
+                        <div class="founder-title">Founder</div>
+                        <p class="founder-bio">Rudi is a helicopter pilot with a 24-year career in the Royal Navy. He has brought together a team focused specifically on HEMS and Search and Rescue operations, the environments where helipad safety matters most.</p>
+                        <p class="founder-bio" style="margin-top: 0.5rem;">Rudi led the introduction of uncrewed air systems to Royal Navy warships, building safety cases from scratch and coordinating across military and civilian organisations where operational data was fragmented and accountability for safety-critical information was unclear.</p>
+                        <p class="founder-bio" style="margin-top: 0.5rem;">Since leaving the Navy, Rudi has worked helping large public and private sector organisations turn fragmented operational data into shared intelligence. HeliGuardian applies this experience directly to the HEMS environment.</p>
+                    </div>
+                </div>
+            </div>
+            <h3 style="color: var(--white); margin-top: 2.5rem; margin-bottom: 1rem;">The Wider Team</h3>
+            <p style="color: var(--slate-400); max-width: 700px;">HeliGuardian's technical lead has over two decades of software engineering experience spanning government, data intelligence, and AI, including senior architecture roles at the UK National Audit Office, and has co-founded and scaled multiple technology companies.</p>
+            <p style="color: var(--slate-400); max-width: 700px; margin-top: 0.75rem;">HeliGuardian is supported by a network of advisors drawn from roles that span all of the stakeholder agencies involved in delivering UK emergency aviation. This includes HEMS and SAR pilots, technical crew, clinicians, NHS Ambulance Service Trusts, and Air Ambulance charities. What unites them is a shared conviction that the problems around hospital helipad safety are solvable, and that solving them means lives saved.</p>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section style="padding: 3rem 0; background: var(--slate-100); text-align: center;">
+        <div class="container">
+            <button class="btn btn-primary" onclick="openModal()">Get Updates on Our Progress</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-wordmark">Heli<span>Guardian</span></div>
+                <div class="footer-links">
+                    <a href="/cdn-cgi/l/email-protection#0e67607a6b7c6b7d7a4e666b6267697b6f7c6a676f60206d6163"><span class="__cf_email__" data-cfemail="3c555248594e594f487c545950555b495d4e58555d52125f5351">[email&#160;protected]</span></a>
+                </div>
+                <div class="footer-copy">© 2026 HeliGuardian</div>
+            </div>
+        </div>
+    </footer>
+
+<!-- Modal -->
+    <div class="modal-overlay" id="modal" onclick="closeModalOnOverlay(event)">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h3>Early Adopter Programme</h3>
+            <p class="modal-intro">Join the programme to shape the product and get early access.</p>
+            <p class="modal-intro" style="margin-top: 0.5rem;">Just development updates, webinar invitations, and early access details. No spam.</p>
+            <form action="https://formspree.io/f/xvzbgoql" method="POST">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="modal-email">Email *</label>
+                        <input type="email" id="modal-email" name="email" required placeholder="you@org.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-organisation">Organisation *</label>
+                        <input type="text" id="modal-organisation" name="organisation" required placeholder="Your organisation">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="modal-role">Role *</label>
+                    <select id="modal-role" name="role" required>
+                        <option value="" disabled selected>Select...</option>
+                        <option value="pilot">Pilot / Flight Crew</option>
+                        <option value="clinical">Clinical</option>
+                        <option value="operations">Operations / Base</option>
+                        <option value="dispatch">Dispatch / HEMS Desk</option>
+                        <option value="site-manager">Hospital / Site Manager</option>
+                        <option value="trust-executive">NHS Trust Executive</option>
+                        <option value="safety">Safety / Compliance</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="modal-interest">What challenges would you want HeliGuardian to solve? <span class="optional">(optional)</span></label>
+                    <textarea id="modal-interest" name="interest" placeholder="Help us prioritise what matters most..."></textarea>
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="modal-phonecall" name="phonecall" value="yes">
+                    <label for="modal-phonecall">I'd welcome a call to discuss further</label>
+                </div>
+                <button type="submit" class="btn btn-primary form-submit">Get Early Adopter Updates</button>
+            </form>
+        </div>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        function openModal() {
+            document.getElementById('modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+            function closeModalOnOverlay(event) {
+        if (event.target === document.getElementById('modal')) {
+            closeModal();
+        }
+    }
+    </script>
+</body>
+</html>
